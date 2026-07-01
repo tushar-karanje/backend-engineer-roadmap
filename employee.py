@@ -1,4 +1,5 @@
-employees = []
+import sys
+employees = ["Tushar","Mr X", "Hruday", "Amit", "Rushank"]
 
 def add_employee():
     employee_name = input("Enter name of employee: ")
@@ -6,34 +7,45 @@ def add_employee():
     print(f"Employee {employee_name} added succesfully")
 
 def show_employees():
-    employees.append(["Tushar","Mr X", "Hruday", "Amit", "Rushank"])
     print(f"Here is the list of employees: {employees}")
 
 
 def search_employee():
-    pass
+    search_name = input("Enter the name of Employee: ").strip()
+    if (search_name in employees):
+       print(f"Following employee is present in list: {search_name}")
+    else :
+       print (f"Employee {search_name} is not present")
 
 def delete_employee():
-    pass
+    emp_name = input("Enter the name which you want to delete:").strip()
+    if (emp_name in employees):
+        employees.remove(emp_name)
+        print(f"Removed employee {emp_name} so the updated list is : {employees}")
+    else :
+       print(f"Unknown Employee: {emp_name} ")
+
 
 def main_menu():
   while (True):  
-    choice=input("Enter your choice: (Add, Delete, Show, Search)").strip()
+    choice=input("Enter your choice: (Add : A, Delete: D, Show: S, Search/Check: C)").strip()
 
     match choice:
-      case "Add":
+      case "A":
         add_employee()
-        break
-      case "Delete":
+        continue
+      case "D":
         delete_employee()
-        break
-      case "Show":
+        continue
+      case "S":
         show_employees()
-        break
-      case "Search":
+        continue
+      case "C":
         search_employee()
-        break
-    
+        continue
+      case _:
+        print("Unknown Choice. Exiting...")
+        sys.exit()
 
 if __name__ == "__main__":
     main_menu()
